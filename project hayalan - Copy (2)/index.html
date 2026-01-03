@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QC App - Integrated System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="navbar-primary">
+    <div class="brand">Cacul Quality Control - Integrated AI</div>
+  </div>
+
+  <div class="navbar-tabs" role="tablist">
+    <a href="#" class="tab active" data-target="assembly">Assembly</a>
+    <a href="#" class="tab" data-target="inprogress">In Progress</a>
+    <a href="#" class="tab" data-target="complete">Complete</a>
+  </div>
+
+  <main>
+    
+    <section id="assembly" class="section active">
+      <div class="single-col">
+        <div class="panel">
+          <div class="row">
+            <div class="info">
+              <span class="line">Work Order Dashboard</span>
+              <span class="line">Silakan pilih jenis form</span>
+            </div>
+            <div class="actions">
+              <select id="jobType" style="padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-weight:600;">
+                  <option value="circle-drive">Circle Drive (117-2100)</option>
+                  <option value="transmission">Transmission (16H)</option>
+              </select>
+              
+              <input id="proInput" class="pro-input" type="text" inputmode="numeric" maxlength="10" placeholder="Masukkan Nomor PRO" />
+              <button class="create-btn" id="createBtn" type="button">Create Job</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inprogress" class="section">
+      <div class="search-wrap">
+        <h2 class="search-title">Job In Progress</h2>
+        <form class="searchbar" id="searchForm">
+          <input id="q" type="search" placeholder="Cari PRO, Nama, atau Deskripsi..." />
+          <button type="submit">Search</button>
+        </form>
+        <div id="inprogressList" class="jobs-list"></div>
+      </div>
+    </section>
+
+    <section id="complete" class="section">
+      <div class="search-wrap">
+        <h2 class="search-title">Job Complete</h2>
+        <form class="searchbar" id="completeSearchForm">
+          <input id="completeQ" type="search" placeholder="Cari PRO..." />
+          <button type="submit">Search</button>
+        </form>
+        <div id="completeList" class="jobs-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <div class="page-modal">
+      
+      <div class="page-header" id="dragHeader">
+        <div class="page-title" id="modalTitle">Check Sheet Form</div>
+        <div class="window-controls">
+            <button class="win-btn btn-min" id="minBtn" title="Minimize">_</button>
+            <button class="win-btn btn-max" id="maxBtn" title="Maximize">□</button>
+            <button class="win-btn btn-close" id="closeBtn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="page-body" id="modalBody"></div>
+
+      <div class="page-footer">
+        <button class="secondary" id="cancelBtn">Cancel / Close</button>
+        <button class="primary" id="saveBtn">Save (In Progress)</button>
+        <button class="success" id="completeBtn">Complete & Lock</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toastBox" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
